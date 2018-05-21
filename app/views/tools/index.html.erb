@@ -6,7 +6,13 @@
     <% @tools.each do |tool| %>
       <div class="col-sm-3">
         <%= link_to tool_path(tool), class:"card" do %>
-          <div  class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/300/200/?random')" >
+          <div  class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+          <% if tool.picture_url %>
+            url('<%= cl_image_tag tool.photo, height: 300, width: 400, crop: :fill %>')
+          <% else %>
+            url('https://picsum.photos/300/200/?random')
+          <% end %>
+          ">
             <div class="card-category"><p><%= tool.category %></p></div>
             <div> <%= tool.name%></div>
             <div class="card-description"><p><%= tool.description %></p></div>
