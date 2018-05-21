@@ -1,1 +1,7 @@
-<h1>Hey</h1>
+<h1>This is the index view</h1>
+
+
+<% @tools.each do |tool| %>
+  <p><%= tool.name %></p>
+  <p><%= tool.description %></p>
+<% end %>

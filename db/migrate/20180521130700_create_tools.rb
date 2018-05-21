@@ -6,7 +6,7 @@ class CreateTools < ActiveRecord::Migration[5.2]
       t.string :category
       t.string :picture_url
       t.string :status
-      t.references :user, foreign_key: true, index: true
+      t.references :user, foreign_key: true, index:
 
       t.timestamps
     end
