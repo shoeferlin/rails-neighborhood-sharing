@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: [:show, :destory]
+  before_action :set_tool, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
