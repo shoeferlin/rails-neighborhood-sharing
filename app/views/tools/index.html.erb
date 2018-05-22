@@ -32,10 +32,11 @@
   </div>
 
   <div class="row">
-    <div class="add_tool">
+    <div class="navigate_to">
       <% if policy(Tool).create? %>
         <%= link_to 'Add new tool', new_tool_path %>
       <% end %>
+      <%= link_to 'Toolbox', toolbox_path %>
     </div>
   </div>
 </div>
