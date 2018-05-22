@@ -17,6 +17,9 @@
 
 <%= link_to "Message", message_path(@tool) %>
 
-<%=render 'shared/form' %>
+
+<% if policy(@tool).update? %>
+  <%= render 'shared/form' %>
+<% end %>
 
 
