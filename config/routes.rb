@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :tools, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   get "tools/:tool_id/message", to: "tools#message", as: :message
-
+  get "/dashboard", to: "pages#dashboard"
 end
