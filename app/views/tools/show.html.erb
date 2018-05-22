@@ -16,10 +16,13 @@
 <div class="tool_info">
   <%= link_to "Delete", tool_path(@tool), method: :delete %>
   <%= link_to "Return", tools_path %>
-  <%= link_to "Book", toolbox_path %>
+  <%= link_to "Toolbox", bookings_path %>
+  <%= link_to bookings_create_path(@tool), class: "form-check form-check-inline", method: :post do %>
+    <button class='btn btn-success'>
+      Add to your cart
+    </button>
+  <% end %>
 </div>
-
-<%= link_to "Message", message_path(@tool) %>
 
 <%=render 'shared/form' %>
 

@@ -1,0 +1,19 @@
+<h1>Toolbox</h1>
+
+<div class="container">
+  <div class="row">
+    <% @toolbox.each do |tool| %>
+      <%= tool.name %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="add_tool">
+      <% if policy(Tool).create? %>
+        <%= link_to 'Add new tool', new_tool_path %>
+      <% end %>
+    </div>
+  </div>
+</div>
