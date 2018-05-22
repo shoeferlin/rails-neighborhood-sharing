@@ -5,14 +5,15 @@
 <% end %>">
 </div>
 
+<div>
 <h2> <%= @tool.name %></h2>
-<h3><%=  @tool.description %></h>
+<h3><%=  @tool.description %></h3>
+</div>
 
-
-
-<%= link_to "Delete", tool_path(@tool), method: :delete %>
-
-<%= link_to "Return", tools_path %>
+<div class="tool_info">
+  <%= link_to "Delete", tool_path(@tool), method: :delete %>
+  <%= link_to "Return", tools_path %>
+</div>
 
 <%=render 'shared/form' %>
 
