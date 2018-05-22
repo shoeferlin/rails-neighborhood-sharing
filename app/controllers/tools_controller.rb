@@ -46,6 +46,7 @@ class ToolsController < ApplicationController
   end
 
   def toolbox
+    @tool = Tool.where()
     authorize @tool
 
   end
