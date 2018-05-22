@@ -6,7 +6,7 @@
     <% @tools.each do |tool| %>
       <div class="col-sm-3">
         <%= link_to tool_path(tool), class:"card" do %>
-          <div  class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+          <div  class="card-background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
           <% if tool.photo? %>
             url('<%= cl_image_path tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
           <% else %>
@@ -17,8 +17,13 @@
             <div> <%= tool.name%></div>
             <div class="card-description"><p><%= tool.description %></p></div>
           <% end  %>
-          <div class="destroy">
-            <%= link_to tool_path(tool), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" do %>
+          <div class="">
+            <% if policy(tool).destroy? %>
+              <div class="destroy">
+              <%= link_to tool_path(tool), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" do %><% end %>
+              </div>
+            <% else %>
+                <div class="disable"><p class="far fa-trash-alt"></p></div>
             <% end %>
           </div>
         </div>
@@ -27,6 +32,8 @@
   </div>
 
   <div class="row">
-    <%= link_to 'Add new tool', new_tool_path %>
+    <% if policy(Tool).create? %>
+      <%= link_to 'Add new tool', new_tool_path %>
+    <% end %>
   </div>
 </div>
