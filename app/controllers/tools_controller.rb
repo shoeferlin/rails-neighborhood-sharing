@@ -44,8 +44,23 @@ class ToolsController < ApplicationController
     redirect_to tools_path
   end
 
-  def toolbox
+  def book
+    @booking =  Booking.new
+    @tool = Tool.find(params[:id])
+    @booking.tool = @tool
+    @booking.user = current_user
+    @tool.status = false
+    redirect_to tool_path(@tool)
+  end
 
+  # def status
+  #   @tool = Tool.find(params[:id])
+  #   @tool.status = false
+  # end
+
+  def toolbox
+    @tool = Tool.where(status: true)
+    authorize @tool
   end
 
   def message
