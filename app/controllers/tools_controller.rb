@@ -22,7 +22,7 @@ class ToolsController < ApplicationController
     authorize @tool
     # authorize @tool
     if @tool.save
-      redirect_to tool_path(@tool)
+      redirect_to tools_path
     else
       render :new
     end
