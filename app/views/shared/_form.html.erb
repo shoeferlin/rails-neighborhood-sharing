@@ -1,0 +1,12 @@
+<h2>Updating tool</h2>
+<%= simple_form_for @tool do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :category %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <% button = f.button :submit%>
+  <%= link_to button, tools_path(@tool) %>
+<% end %>
+
+
