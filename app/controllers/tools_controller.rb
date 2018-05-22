@@ -36,13 +36,16 @@ class ToolsController < ApplicationController
     @tool = Tool.find(params[:id])
     @tool.update(params_tool)
     redirect_to tool_path(@tool)
-
   end
 
   def destroy
     authorize @tool
     @tool.destroy
     redirect_to tools_path
+  end
+
+  def toolbox
+
   end
 
   def message
