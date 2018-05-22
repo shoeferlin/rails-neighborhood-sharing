@@ -45,6 +45,12 @@ class ToolsController < ApplicationController
     redirect_to tools_path
   end
 
+  def toolbox
+    @tool = Tool.where()
+    authorize @tool
+
+  end
+
   private
 
   def params_tool
