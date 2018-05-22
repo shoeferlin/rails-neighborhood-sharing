@@ -1,7 +1,25 @@
 body {
   color: $black;
+  background: #F0F1F5;
+  padding-top: 50px;
 }
 
-.add_tool {
+.navigate_to {
   text-align: center;
+}
+
+#chatroom{
+  padding: 30px;
+  border: 1px solid lightgrey;
+  background: white;
+}
+
+.date{
+  color: #b3b3b3;
+}
+
+#messages{
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid lightgrey;
 }

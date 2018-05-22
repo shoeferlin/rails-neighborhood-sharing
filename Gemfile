@@ -13,6 +13,9 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'pundit'
 
+# SH Adding gems for seed
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'

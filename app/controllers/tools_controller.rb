@@ -36,13 +36,36 @@ class ToolsController < ApplicationController
     @tool = Tool.find(params[:id])
     @tool.update(params_tool)
     redirect_to tool_path(@tool)
-
   end
 
   def destroy
     authorize @tool
     @tool.destroy
     redirect_to tools_path
+  end
+
+  def book
+    @booking =  Booking.new
+    @tool = Tool.find(params[:id])
+    @booking.tool = @tool
+    @booking.user = current_user
+    @tool.status = false
+    redirect_to tool_path(@tool)
+  end
+
+  # def status
+  #   @tool = Tool.find(params[:id])
+  #   @tool.status = false
+  # end
+
+  def toolbox
+    @tool = Tool.where(status: true)
+    authorize @tool
+  end
+
+  def message
+    @tool = Tool.find(params[:tool_id])
+    authorize @tool
   end
 
   private

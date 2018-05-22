@@ -1,20 +1,20 @@
-<h1>This is the index view</h1>
-
-
 <div class="container">
+  <h1>Choose a tool</h1>
   <div class="row">
     <% @tools.each do |tool| %>
       <div class="col-sm-3">
         <%= link_to tool_path(tool), class:"card" do %>
-          <div  class="card-background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+          <div  class="card-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
           <% if tool.photo? %>
             url('<%= cl_image_path tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
+          <% elsif !tool.picture_url.nil? %>
+            url(<%= tool.picture_url %>)
           <% else %>
             url('https://picsum.photos/300/200/?random')
           <% end %>
           ">
             <div class="card-category"><p><%= tool.category %></p></div>
-            <div> <%= tool.name%></div>
+            <div> <h4> <%= tool.name%> </h4> </div>
             <div class="card-description"><p><%= tool.description %></p></div>
           <% end  %>
           <div class="">
@@ -32,10 +32,13 @@
   </div>
 
   <div class="row">
-    <div class="add_tool">
+    <div class="navigate_to">
       <% if policy(Tool).create? %>
         <%= link_to 'Add new tool', new_tool_path %>
       <% end %>
+      <%= link_to 'Toolbox', toolbox_path %>
     </div>
   </div>
+
 </div>
+
