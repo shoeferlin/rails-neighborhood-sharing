@@ -45,6 +45,11 @@ class ToolsController < ApplicationController
     redirect_to tools_path
   end
 
+  def message
+    @tool = Tool.find(params[:tool_id])
+    authorize @tool
+  end
+
   private
 
   def params_tool
