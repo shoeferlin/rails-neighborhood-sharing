@@ -45,6 +45,11 @@ class ToolsController < ApplicationController
     redirect_to tools_path
   end
 
+  def toolbox
+    authorize @tool
+
+  end
+
   private
 
   def params_tool
