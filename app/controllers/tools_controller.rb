@@ -3,19 +3,24 @@ class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @tools = Tool.all
+    # @tools = Tool.all
+    @tools = policy_scope(Tool).order(created_at: :desc)
   end
 
   def show
+    authorize @tool
   end
 
   def new
     @tool = Tool.new
+    authorize @tool
   end
 
   def create
     @tool = Tool.new(params_tool)
     @tool.user = current_user
+    authorize @tool
+    # authorize @tool
     if @tool.save
       redirect_to tool_path(@tool)
     else
@@ -35,6 +40,7 @@ class ToolsController < ApplicationController
   end
 
   def destroy
+    authorize @tool
     @tool.destroy
     redirect_to tools_path
   end
