@@ -19,7 +19,6 @@ class ToolsController < ApplicationController
     if @tool.save
       redirect_to tool_path(@tool)
     else
-      raise
       render :new
     end
   end
