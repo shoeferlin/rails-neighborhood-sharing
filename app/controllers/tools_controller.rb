@@ -9,7 +9,6 @@ class ToolsController < ApplicationController
 
   def show
     authorize @tool
-    redirect_to tools_path
   end
 
   def new
