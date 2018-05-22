@@ -32,8 +32,10 @@
   </div>
 
   <div class="row">
-    <% if policy(Tool).create? %>
-      <%= link_to 'Add new tool', new_tool_path %>
-    <% end %>
+    <div class="add_tool">
+      <% if policy(Tool).create? %>
+        <%= link_to 'Add new tool', new_tool_path %>
+      <% end %>
+    </div>
   </div>
 </div>
