@@ -45,10 +45,9 @@ class ToolsController < ApplicationController
     redirect_to tools_path
   end
 
-  def toolbox
-    @tool = Tool.where()
+  def message
+    @tool = Tool.find(params[:tool_id])
     authorize @tool
-
   end
 
   private

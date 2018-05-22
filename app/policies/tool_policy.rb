@@ -19,5 +19,9 @@ class ToolPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def message?
+    true
+  end
+
 
 end
