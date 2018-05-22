@@ -13,7 +13,9 @@
 
 
 <div class="tool_info">
-  <%= link_to "Delete", tool_path(@tool), method: :delete %>
+  <% if policy(@tool).destroy? %>
+    <%= link_to "Delete", tool_path(@tool), method: :delete %>
+  <% end %>
   <%= link_to "Return", tools_path %>
   <%= link_to "Book", toolbox_path %>
 </div>
@@ -24,5 +26,6 @@
 <% if policy(@tool).update? %>
   <%= render 'shared/form' %>
 <% end %>
+
 
 
