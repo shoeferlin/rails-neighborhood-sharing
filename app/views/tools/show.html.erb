@@ -5,6 +5,11 @@
 <p><%= @tool.description %></p>
 <p><%= @tool.photo %></p>
 
+
 <%= link_to "Delete", tool_path(@tool), method: :delete %>
 
 <%= link_to "Return", tools_path %>
+
+<%=render 'shared/form' %>
+
+
