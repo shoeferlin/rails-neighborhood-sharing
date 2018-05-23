@@ -1,20 +1,27 @@
 .img-rounded {
-    border-radius: 29px;
+    border-radius: 8px;
     height: 258px;
-    margin-right: 47px;
-    margin-top: 48px;
+    background-size: cover;
 }
 
 .banner {
-  height: 350px;
+  padding: 50px 0px;
+  background-size: cover;
 }
 
 
 .banner-show {
   color: white;
   text-shadow: 2px 2px 4px #000000;
-  margin-top: 88px;
-  margin-left: 322px;
+}
+
+.banner-show h2 {
+  padding: 10px 0px;
+}
+
+.banner-show p {
+  font-size: 18px;
+  margin: 10px 0px;
 }
 
 .infobox {
@@ -33,4 +40,9 @@
   margin: 20px 250px;
   align-items: center;
   justify-content: space-around;
+}
+
+.banner-container {
+  display: flex;
+  justify-content: space-between;
 }

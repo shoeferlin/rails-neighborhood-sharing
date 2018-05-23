@@ -1,28 +1,28 @@
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),
-  <% if @tool.photo? %>
-    url('<%= cl_image_path @tool.photo, height: 800, width: 1500, crop: :fill %>')
-  <% elsif !@tool.picture_url.nil? %>
-      url(<%= @tool.picture_url %>)
-  <%else %>
-    url('http://treibholzeffekt.com/wp-content/uploads/2014/12/Werkzeuge_dunkel.jpg')
-  <%end %>">
-
-  <div class="row">
-    <div class="col-md-6" >
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2 banner-show">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.17) 0%, rgba(0, 36, 61, 0.5) 50%),
+  url('http://treibholzeffekt.com/wp-content/uploads/2014/12/Werkzeuge_dunkel.jpg')">
+  <div class="container">
+    <div class="row banner-container">
+      <div class="col-md-8 col-md-offset-2 banner-show">
           <h2><%= @tool.name %></h2>
-          <h3><%= @tool.description %></h3>
-        </div>
+          <p><%= @tool.description %></p>
+          <h4><%= @tool.category %></h4>
       </div>
-    </div>
-    <div class="col-md-6">
+      <div class="col-md-6">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <img src=" https://picsum.photos/300/200/?random" alt="" class="img-rounded">
+            <div class="img-rounded" style="background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.26) 0%, rgba(0, 36, 61, 0.19) 50%),
+              <% if @tool.photo? %>
+                url('<%= cl_image_path @tool.photo, height: 800, width: 1500, crop: :fill %>')
+              <% elsif !@tool.picture_url.nil? %>
+                  url(<%= @tool.picture_url %>)
+              <%else %>
+                url('http://treibholzeffekt.com/wp-content/uploads/2014/12/Werkzeuge_dunkel.jpg')
+              <%end %>">
+            </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -44,7 +44,7 @@
       <% end %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="mapcontainer"
       id="map"
