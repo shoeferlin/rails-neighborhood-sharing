@@ -10,7 +10,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def toolbox?
-    record.user == user
+    true
   end
 
   def accept?
