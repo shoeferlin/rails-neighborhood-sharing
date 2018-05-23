@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: [:show, :destroy]
+  before_action :set_tool, only: [:show, :destroy, :update, :edit]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -29,11 +29,9 @@ class ToolsController < ApplicationController
   end
 
   def edit
-    @tool = Tool.find(params[:id])
   end
 
   def update
-    @tool = Tool.find(params[:id])
     @tool.update(params_tool)
     redirect_to tool_path(@tool)
   end
@@ -44,28 +42,25 @@ class ToolsController < ApplicationController
     redirect_to tools_path
   end
 
-  def book
-    @booking =  Booking.new
-    @tool = Tool.find(params[:id])
-    @booking.tool = @tool
-    @booking.user = current_user
-    @tool.status = false
-    redirect_to tool_path(@tool)
-  end
-
-  # def status
-  #   @tool = Tool.find(params[:id])
-  #   @tool.status = false
-  # end
-
   def toolbox
     @tool = Tool.where(status: true)
     authorize @tool
   end
 
-  def message
-    @tool = Tool.find(params[:tool_id])
+  def update_status
+    # @booking =  Booking.new
+    # @booking.tool_id = @tool.id
+    # @booking.user_id = current_user.id
+    # @booking.save
     authorize @tool
+    raise
+    @tool = Tool.find(params[:id])
+    raise
+    @tool.status = true
+    @tool.save
+    # if
+    #   redirect_to toolbox_path
+    # end
   end
 
   private
