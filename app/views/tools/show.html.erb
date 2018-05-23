@@ -21,11 +21,17 @@
     <%= link_to "Delete", tool_path(@tool), method: :delete %>
   <% end %>
   <%= link_to "Return", tools_path %>
-  <%= link_to "Book", toolbox_path %>
+  <% if policy(Booking).toolbox? %>
+    <%= link_to "Toolbox", bookings_path %>
+  <% end %>
+  <%= link_to bookings_create_path(@tool), class: "form-check form-check-inline", method: :post do %>
+    <button class='btn btn-success'>
+      Add to your cart
+    </button>
+  <% end %>
 </div>
 
-<%= link_to "Message", message_path(@tool) %>
-
+<%=render 'shared/form' %>
 
 <% if policy(@tool).update? %>
   <%= render 'shared/form' %>

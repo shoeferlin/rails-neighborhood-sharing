@@ -1,0 +1,21 @@
+<h1>Toolbox</h1>
+
+<div class="container">
+  <div class="row">
+    <% @bookings.each do |booking| %>
+      <% if booking.status = true %>
+        <p><%= booking.tool.name %> booked by <%= booking.user.email %> with booking id <%= booking.id %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="add_tool">
+      <% if policy(Tool).create? %>
+        <%= link_to 'Return', tools_path %>
+      <% end %>
+    </div>
+  </div>
+</div>
