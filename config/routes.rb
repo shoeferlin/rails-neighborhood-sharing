@@ -6,9 +6,15 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "pages#dashboard"
 
-  get "tools/:tool_id/", to: "tools#update_status", as: :update_status
-  get "/toolbox", to: "tools#toolbox", as: :toolbox
+  # get "tools/:tool_id/", to: "tools#update_status", as: :update_status
+  # get "/toolbox", to: "tools#toolbox", as: :toolbox
 
   post "/bookings/:tool_id", to: "bookings#create", as: :bookings_create
-  get "/bookings", to: "bookings#index"
+
+  get "/bookings/:tool_id", to: "bookings#index"
+  # post "/bookings"
+
+  patch "bookings/:id/accept", to: "bookings#accept", as: :accept_booking
+  patch "bookings/:id/decline", to: "bookings#decline", as: :decline_booking
+
 end

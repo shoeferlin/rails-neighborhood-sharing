@@ -5,21 +5,28 @@ class BookingsController < ApplicationController
   end
 
   def create
-    # Create a new booking, confirmed is false
-    # We only add it to the 'cart'
     @tool = Tool.find(params[:tool_id])
     @booking = Booking.new(user: current_user)
     @booking.tool = @tool
     authorize @booking
-    @booking.status = true
     if @booking.save
-      # @tool.update(status: true)
       redirect_to tool_path(@tool)
     end
   end
 
-  def update
-    authorize @toolbox
-    # We set the confirmed status of the booking(s) to true
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.status = "accepted"
+    @booking.save
+    authorize @booking
+    redirect_to dashboard_path
+  end
+
+  def decline
+    @booking = Booking.find(params[:id])
+    @booking.status = "declined"
+    @booking.save
+    authorize @booking
+    redirect_to dashboard_path
   end
 end
