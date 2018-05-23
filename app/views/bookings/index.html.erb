@@ -2,8 +2,10 @@
 
 <div class="container">
   <div class="row">
-    <% @toolbox.each do |tool| %>
-      <%= tool.name %>
+    <% @bookings.each do |booking| %>
+      <% if booking.status = true %>
+        <p><%= booking.tool.name %> booked by <%= booking.user.email %> with booking id <%= booking.id %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -12,7 +14,7 @@
   <div class="row">
     <div class="add_tool">
       <% if policy(Tool).create? %>
-        <%= link_to 'Add new tool', new_tool_path %>
+        <%= link_to 'Return', tools_path %>
       <% end %>
     </div>
   </div>

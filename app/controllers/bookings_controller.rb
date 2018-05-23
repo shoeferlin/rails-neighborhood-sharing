@@ -1,8 +1,7 @@
 class BookingsController < ApplicationController
 
   def index
-    @toolbox = Tool.where(status: true)
-    authorize @toolbox
+    @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
   def create
@@ -12,8 +11,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(user: current_user)
     @booking.tool = @tool
     authorize @booking
+    @booking.status = true
     if @booking.save
-      @tool.update(status: true)
+      # @tool.update(status: true)
       redirect_to tool_path(@tool)
     end
   end
