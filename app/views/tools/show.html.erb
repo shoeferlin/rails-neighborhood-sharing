@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div class="tool_info">
+<div class="container">
   <% if policy(@tool).destroy? %>
     <%= link_to "Delete", tool_path(@tool), method: :delete %>
   <% end %>
@@ -32,6 +32,9 @@
       Add to your cart
     </button>
   <% end %>
+  <% if policy(@tool).update? %>
+    <%= render 'shared/form' %>
+  <% end %>
 </div>
 
 <div
@@ -42,13 +45,6 @@
 ></div>
 
 
-
-
-<%=render 'shared/form' %>
-
-<% if policy(@tool).update? %>
-  <%= render 'shared/form' %>
-<% end %>
 
 
 
