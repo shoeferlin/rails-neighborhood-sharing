@@ -39,10 +39,10 @@ class ToolsController < ApplicationController
   def edit
   end
 
-  def update
-    @tool.update(params_tool)
-    redirect_to tool_path(@tool)
-  end
+  # def update
+  #   @tool.update(params_tool)
+  #   redirect_to tool_path(@tool)
+  # end
 
   def destroy
     authorize @tool
@@ -50,26 +50,26 @@ class ToolsController < ApplicationController
     redirect_to tools_path
   end
 
-  def toolbox
-    @tool = Tool.where(status: true)
-    authorize @tool
-  end
+  # def toolbox
+  #   @tool = Tool.where(status: true)
+  #   authorize @tool
+  # end
 
-  def update_status
-    # @booking =  Booking.new
-    # @booking.tool_id = @tool.id
-    # @booking.user_id = current_user.id
-    # @booking.save
-    authorize @tool
-    raise
-    @tool = Tool.find(params[:id])
-    raise
-    @tool.status = true
-    @tool.save
-    # if
-    #   redirect_to toolbox_path
-    # end
-  end
+  # def update_status
+  #   # @booking =  Booking.new
+  #   # @booking.tool_id = @tool.id
+  #   # @booking.user_id = current_user.id
+  #   # @booking.save
+  #   authorize @tool
+  #   raise
+  #   @tool = Tool.find(params[:id])
+  #   raise
+  #   @tool.status = true
+  #   @tool.save
+  #   # if
+  #   #   redirect_to toolbox_path
+  #   # end
+  # end
 
   private
 
