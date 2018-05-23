@@ -1,20 +1,25 @@
 
-
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),
-    <% if @tool.photo? %>
+<div class="container">
+  <div class="card_show" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),
+     <% if @tool.photo? %>
       url('<%= cl_image_path @tool.photo, height: 800, width: 1500, crop: :fill %>')
+    <% elsif !@tool.picture_url.nil? %>
+      url(<%= @tool.picture_url %>)
     <% else %>
       url('https://picsum.photos/800/1500/?random')
     <% end %>">
+  </div>
+  <div class="tool_info">
+    <h2><%= @tool.name %></h2>
+    <h3><%= @tool.description %></h3>
+  </div>
 </div>
 
-<div>
-  <h2> <%= @tool.name %></h2>
-  <h3><%=  @tool.description %></h3>
-</div>
 
 <div class="tool_info">
-  <%= link_to "Delete", tool_path(@tool), method: :delete %>
+  <% if policy(@tool).destroy? %>
+    <%= link_to "Delete", tool_path(@tool), method: :delete %>
+  <% end %>
   <%= link_to "Return", tools_path %>
   <% if policy(Booking).toolbox? %>
     <%= link_to "Toolbox", bookings_path %>
@@ -27,5 +32,10 @@
 </div>
 
 <%=render 'shared/form' %>
+
+<% if policy(@tool).update? %>
+  <%= render 'shared/form' %>
+<% end %>
+
 
 
