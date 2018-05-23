@@ -8,13 +8,21 @@
     url('http://treibholzeffekt.com/wp-content/uploads/2014/12/Werkzeuge_dunkel.jpg')
   <%end %>">
 
-  <div class="container">
+  <div class="row">
     <div class="col-md-6" >
-      <h2><%= @tool.name %></h2>
-      <h3><%= @tool.description %></h3>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 banner-show">
+          <h2><%= @tool.name %></h2>
+          <h3><%= @tool.description %></h3>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
-      <img src=" https://picsum.photos/300/200/?random" alt="" class="img-rounded">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <img src=" https://picsum.photos/300/200/?random" alt="" class="img-rounded">
+          </div>
+        </div>
     </div>
   </div>
 </div>
@@ -36,7 +44,7 @@
       <% end %>
     </div>
   </div>
-
+  
   <div class="row">
     <div class="mapcontainer"
       id="map"
