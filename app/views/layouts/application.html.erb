@@ -11,10 +11,11 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <%= ENV['GOOGLE_API_SERVER_KEY'] %>
     <%= render 'shared/navbar' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js" %>
+    <%= javascript_include_tag "http://maps.google.com/maps/api/js?key=AIzaSyAHIeHUOejFDEr-B5uegJV05XvD7eWCClo" %>
+    <%= javascript_pack_tag "map" %>
   </body>
 </html>
