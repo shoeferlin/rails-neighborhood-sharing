@@ -8,7 +8,15 @@ class ToolsController < ApplicationController
   end
 
   def show
+    # SH: For maps
+    # @tool = Tool.user.where.not(latitude: nil, longitude: nil)
     authorize @tool
+
+    @markers = {
+        lat: @tool.user.latitude,
+        lng: @tool.user.longitude,
+        # infoWindow: { content: render_to_string(partial: "/tool/map_box", locals: { tool: tool }) }
+      }
   end
 
   def new
