@@ -17,7 +17,8 @@ user_2 = User.create(email: "john@gmail.com", password: "password123")
 8.times do
   user_i = User.create(
     email: Faker::Internet.email,
-    password: Faker::Internet.password(8)
+    password: Faker::Internet.password(8),
+    address: "Berlin",
     )
 end
 
@@ -32,3 +33,4 @@ Tool.create(name: "Lawn mower", user_id: User.find(7).id, category: "Garden tool
 Tool.create(name: "Car-jack", user_id: User.find(8).id, category: "Car tools", description: "To those of you who don’t know what a floor jack is, it is basically a hydraulically operated device, which is usually used for lifting cars, trucks or other heavy machinery.", picture_url: "https://images-na.ssl-images-amazon.com/images/I/717kmAlIl9L._SL1500_.jpg")
 Tool.create(name: "Interchangeable Spanner Torque", user_id: User.find(10).id, category: "Car tools", description: "Neiko Pro Professional 1/2 inch, Interchangeable 8 piece 15 - 80 Ft/Lb Torque Wrench Set", picture_url: "https://images-na.ssl-images-amazon.com/images/I/51CzOY7AsNL.jpg")
 
+puts "SEEDING COMPLETED"
