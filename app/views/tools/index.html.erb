@@ -33,22 +33,11 @@
               <div class="destroy">
               <%= link_to tool_path(tool), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" do %><% end %>
               </div>
-            <% else %>
-                <div class="disable"><p class="far fa-trash-alt"></p></div>
             <% end %>
           </div>
         </div>
       </div>
     <% end %>
-  </div>
-
-  <div class="row">
-    <div class="navigate_to">
-      <% if policy(Tool).create? %>
-        <%= link_to 'Add new tool', new_tool_path %>
-      <% end %>
-      <%= link_to 'Dashboard', dashboard_path %>
-    </div>
   </div>
 
 </div>

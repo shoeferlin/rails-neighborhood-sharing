@@ -10,7 +10,9 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Toolbox", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Add new tool", new_tool_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Your Bookings", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

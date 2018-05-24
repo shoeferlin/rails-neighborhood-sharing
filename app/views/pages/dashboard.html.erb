@@ -19,6 +19,8 @@
           <div class="card-description booking-info">
             <p>Booked by: <%= booking.user.email %></p>
             <p>Booking id: <%= booking.id %></p>
+            <p>Start time: <%=  %> </p>
+            <p>Start end: <%=  %> </p>
           </div>
           <div>
             <%= link_to accept_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
