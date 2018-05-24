@@ -1,13 +1,15 @@
 .banner {
   color: white;
   text-align: center;
-  height: 368px;
+  height: calc(100vh - 70px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
@@ -26,3 +28,13 @@
   text-align: left;
 }
 
+.banner_show {
+  color: white;
+  text-align: center;
+  height: 365px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

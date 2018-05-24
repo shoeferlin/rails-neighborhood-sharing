@@ -4,6 +4,7 @@ class ToolsController < ApplicationController
 
   def main
     authorize Tool.new
+    @tools = Tool.offset(rand(1..Tool.count - 3)).first(3)
   end
 
   def index
@@ -28,12 +29,22 @@ class ToolsController < ApplicationController
     else
       @tools = Tool.all
     end
+
+    @tools_w_coordinates = []
+    @markers = []
+
+    @tools.each do |tool|
+      unless tool.user.latitude.nil? && tool.user.latitude.nil?
+        @markers << {lat: tool.user.latitude, lng: tool.user.longitude}
+      end
+    end
   end
 
   def show
     # SH: For maps
     # @tool = Tool.user.where.not(latitude: nil, longitude: nil)
     authorize @tool
+    @booking = Booking.new(user: current_user)
 
     @markers = [{
         lat: @tool.user.latitude,
@@ -44,6 +55,7 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
+    @categories = ["Hammer", "Drilling machine", "Circular Saw", "Spirit level", "Wheel barrow", "Lawn mower", "Car-jack", "Interchangeable Spanner Torque", "screwdriver"]
     authorize @tool
   end
 

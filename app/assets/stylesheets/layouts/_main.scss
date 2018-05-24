@@ -1,7 +1,7 @@
 body {
   color: $black;
   background: #F0F1F5;
-  padding-top: 50px;
+  margin: 0;
 }
 
 .navigate_to {
@@ -24,3 +24,7 @@ body {
   border-top: 1px solid lightgrey;
 }
 
+
+.mapcontainer {
+  margin-top: 20px;
+}
