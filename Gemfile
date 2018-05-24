@@ -13,6 +13,8 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'pundit'
 gem 'geocoder'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails'
 
 # SH Adding gems for seed
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'

@@ -11,6 +11,7 @@ class ToolsController < ApplicationController
     # SH: For maps
     # @tool = Tool.user.where.not(latitude: nil, longitude: nil)
     authorize @tool
+    @booking = Booking.new(user: current_user)
 
     @markers = [{
         lat: @tool.user.latitude,

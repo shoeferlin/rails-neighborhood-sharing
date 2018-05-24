@@ -7,6 +7,10 @@ class BookingsController < ApplicationController
   def create
     @tool = Tool.find(params[:tool_id])
     @booking = Booking.new(user: current_user)
+    if params["booking"]
+      @booking.start_time = DateTime.parse(params["booking"]["start_date"])
+      @booking.end_time = DateTime.parse(params["booking"]["end_date"])
+    end
     @booking.tool = @tool
     authorize @booking
     if @booking.save
@@ -29,4 +33,12 @@ class BookingsController < ApplicationController
     authorize @booking
     redirect_to dashboard_path
   end
+
+  private
+
+  # def params_booking
+  # #returns filtered hash
+  #   params.require(:booking).permit(:start_time, :end_time, :user_id, :tool_id, :status)
+  # end
+
 end
