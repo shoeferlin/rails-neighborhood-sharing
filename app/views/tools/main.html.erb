@@ -7,30 +7,8 @@
   <h2 class="top_tool">Our Top Tools</h2>
   <div class="row main_container">
     <% @tools.each do |tool| %>
-      <div class="col-sm-3">
-        <%= link_to tool_path(tool), class:"card" do %>
-          <div  class="card-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
-          <% if tool.photo? %>
-            url('<%= cl_image_path tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
-          <% elsif !tool.picture_url.nil? %>
-            url(<%= tool.picture_url %>)
-          <% else %>
-            url('https://picsum.photos/300/200/?random')
-          <% end %>
-          ">
-            <div class="card-category"><p><%= tool.category %></p></div>
-            <div> <h4> <%= tool.name%> </h4> </div>
-            <div class="card-description"><p><%= tool.description %></p></div>
-          <% end  %>
-          <div class="">
-            <% if policy(tool).destroy? %>
-              <div class="destroy">
-              <%= link_to tool_path(tool), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" do %><% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render 'card', tool: tool %>
     <% end %>
   </div>
 </div>
+
