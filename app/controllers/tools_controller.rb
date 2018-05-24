@@ -54,6 +54,7 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
+    @categories = ["Hammer", "Drilling machine", "Circular Saw", "Spirit level", "Wheel barrow", "Lawn mower", "Car-jack", "Interchangeable Spanner Torque", "screwdriver"]
     authorize @tool
   end
 
