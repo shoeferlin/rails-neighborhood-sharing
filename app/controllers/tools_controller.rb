@@ -5,6 +5,12 @@ class ToolsController < ApplicationController
   def index
     # @tools = Tool.all
     @tools = policy_scope(Tool).order(created_at: :desc)
+
+    if params[:query].present?
+      @tools = Tool.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @tools = Tool.all
+    end
   end
 
   def show
