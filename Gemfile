@@ -13,6 +13,7 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'pundit'
 gem 'geocoder'
+gem 'pg_search'
 
 # SH Adding gems for seed
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
