@@ -4,6 +4,7 @@ class ToolsController < ApplicationController
 
   def main
     authorize Tool.new
+    @tools = Tool.offset(rand(1..Tool.count - 4)).first(4)
   end
 
   def index
