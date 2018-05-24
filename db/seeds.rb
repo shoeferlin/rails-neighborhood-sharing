@@ -9,18 +9,26 @@
 
 # Users with a known password
 
-user_1 = User.create(email: "henri@gmail.com", password: "password123")
-user_2 = User.create(email: "john@gmail.com", password: "password123")
+user_1 = User.create(email: "henri@gmail.com", password: "password123", address: "London")
+user_2 = User.create(email: "john@gmail.com", password: "password123", address: "Barcelona")
+user_3 = User.create(email: "test@test.de", password: "password123", address: "Berlin")
+user_4 = User.create(email: Faker::Internet.email, password: Faker::Internet.password(8), address: "Berlin")
+user_5 = User.create(email: Faker::Internet.email, password: Faker::Internet.password(8), address: "München")
+user_6 = User.create(email: Faker::Internet.email, password: Faker::Internet.password(8), address: "Paris")
+user_7 = User.create(email: Faker::Internet.email, password: Faker::Internet.password(8), address: "Dublin")
+user_8 = User.create(email: Faker::Internet.email, password: Faker::Internet.password(8), address: "Hamburg")
+user_9 = User.create(email: Faker::Internet.email, password: Faker::Internet.password(8), address: "Dresden")
+user_10 = User.create(email: Faker::Internet.email, password: Faker::Internet.password(8), address: "Potsdam")
 
 # SH: Random users with a faker gem email and password
 
-8.times do
-  user_i = User.create(
-    email: Faker::Internet.email,
-    password: Faker::Internet.password(8),
-    address: "Berlin",
-    )
-end
+# 8.times do
+#   user_i = User.create(
+#     email: Faker::Internet.email,
+#     password: Faker::Internet.password(8),
+#     address: "Berlin",
+#     )
+# end
 
 # SH: Create 20 tools (picture_url's are Amazon images)
 

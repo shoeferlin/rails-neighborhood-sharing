@@ -28,6 +28,15 @@ class ToolsController < ApplicationController
     else
       @tools = Tool.all
     end
+
+    @tools_w_coordinates = []
+    @markers = []
+
+    @tools.each do |tool|
+      unless tool.user.latitude.nil? && tool.user.latitude.nil?
+        @markers << {lat: tool.user.latitude, lng: tool.user.longitude}
+      end
+    end
   end
 
   def show
