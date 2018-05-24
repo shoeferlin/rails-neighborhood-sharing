@@ -1,0 +1,65 @@
+<!-- User view -->
+<h1>Shopping Chart</h1>
+<div>
+  <% count = 1 %>
+  <% display = false %>
+  <%= form_tag destroy_mulitple_bookings_path, method: :delete do %>
+
+        <!-- Could write header -->
+    <% @bookings.each do |booking| %>
+      <% if booking.user = current_user  %>
+        <div id="shopping_chart">
+          <ul class="product-list">
+            <li>
+              <span class="product-img">
+                  <img src="<%= booking.tool.picture_url %>" alt="No Picture" height="100" width="100">
+              </span>
+              <span class="product-count">Nr.: <%= count %></span>
+              <span class="product-title"><%= booking.tool.name %></span>
+              <span class="product-category"><%= booking.tool.category %></span>
+              <%= check_box_tag "bookings_ids[]", booking.id %>
+            </li>
+          </ul>
+        </div>
+        <% count += 1;  %>
+        <% display = true %>
+      <% end %>
+    <% end %>
+
+    <% if display %>
+      <div class="scartlinks">
+        <%= link_to 'Add new item', new_tool_path, :class => "btn btn-info" %>
+        <%= submit_tag "Delete selected", :class => "btn btn-success" %>
+        <%= link_to 'Buy', new_tool_path, :class => "btn btn-success" %>
+      </div>
+    <% end %>
+
+  <% end %>
+</div>
+
+
+
+
+<!--
+
+<script>
+  $(document).ready(function(){
+
+    // Add a event listener when you click the button
+    document.getElementById('destroy-bookings-btn').addEventListener("click", destroyBookings);
+
+    function destroyBookings() {
+      // retrieve the inputs html element
+      const ....
+      // get the booking id for the inputs that are checked
+      const bookingIds = inputs.map....
+
+      // send these elements to the controller
+      // Send them via ajax request
+      // OR append it inside the url to pass them as parameters
+       window.location.href = < %=destroy_booking_path(@bookings) %> + bookingIds
+    }
+
+  });
+</script>
+ -->
