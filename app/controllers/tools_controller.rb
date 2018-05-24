@@ -7,7 +7,12 @@ class ToolsController < ApplicationController
     @tools = policy_scope(Tool).order(created_at: :desc)
 
     if params[:query].present?
-      @tools = Tool.where("name ILIKE ?", "%#{params[:query]}%")
+      sql_query = " \
+        tools.name ILIKE :query \
+        OR tools.description ILIKE :query \
+        OR users.email ILIKE :query \
+      "
+      @tools = Tool.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
       @tools = Tool.all
     end
