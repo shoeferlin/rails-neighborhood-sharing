@@ -1,7 +1,7 @@
 .banner {
   color: white;
   text-align: center;
-  height: 368px;
+  height: calc(100vh - 70px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -26,3 +26,18 @@
   text-align: left;
 }
 
+.dania{
+background-size: cover;
+}
+
+
+.banner_show {
+  color: white;
+  text-align: center;
+  height: 365px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
