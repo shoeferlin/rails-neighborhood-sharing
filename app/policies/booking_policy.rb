@@ -21,4 +21,7 @@ class BookingPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def destroy_multiple?
+    true
+  end
 end

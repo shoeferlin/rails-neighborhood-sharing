@@ -7,10 +7,11 @@ class BookingsController < ApplicationController
   def create
     @tool = Tool.find(params[:tool_id])
     @booking = Booking.new(user: current_user)
-    if params["booking"]
+    if params["booking"]["start_date"].to_date
       @booking.start_time = DateTime.parse(params["booking"]["start_date"])
       @booking.end_time = DateTime.parse(params["booking"]["end_date"])
     end
+
     @booking.tool = @tool
     authorize @booking
     if @booking.save
@@ -34,11 +35,20 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
-  private
-
-  # def params_booking
-  # #returns filtered hash
-  #   params.require(:booking).permit(:start_time, :end_time, :user_id, :tool_id, :status)
+  # def destroy
+  #   @bookings = Booking.find(params['check'])
+  #   raise
+  #   @bookings.destroy
+  #   redirect_to dashboard_path
   # end
+
+  def destroy_multiple
+    @booking = Booking.destroy(params["bookings_ids"])
+    authorize @booking
+    respond_to do |format|
+      format.html { redirect_to bookings_path }
+      format.json { head :no_content }
+    end
+  end
 
 end
