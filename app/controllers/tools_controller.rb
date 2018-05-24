@@ -1,10 +1,33 @@
 class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :destroy, :update, :edit]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:main, :index, :show]
+
+  def main
+    authorize Tool.new
+  end
 
   def index
     # @tools = Tool.all
     @tools = policy_scope(Tool).order(created_at: :desc)
+
+    if params[:query].present?
+      @tools = []
+      PgSearch::Multisearch.rebuild(Tool)
+      PgSearch::Multisearch.rebuild(User)
+      results = PgSearch.multisearch(params[:query])
+
+      results.each do |result|
+        if result.searchable.class.name == 'User'
+          result.searchable.owned_tools.each do |tool|
+            @tools << tool
+          end
+        else
+          @tools.push(result.searchable)
+        end
+      end
+    else
+      @tools = Tool.all
+    end
   end
 
   def show

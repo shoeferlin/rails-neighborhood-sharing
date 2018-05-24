@@ -5,6 +5,10 @@ class ToolPolicy < ApplicationPolicy
     end
   end
 
+  def main?
+    true
+  end
+
   def create?
     return true
   end

@@ -15,6 +15,8 @@ gem 'pundit'
 gem 'geocoder'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'pg_search'
+
 
 # SH Adding gems for seed
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
