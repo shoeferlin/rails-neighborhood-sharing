@@ -1,24 +1,60 @@
 .card {
-  color: $white;
-  text-shadow: 2px 2px 4px #000000;
-  padding: 1%;
+  color: grey;
+  font-weight: lighter;
+  line-height: 25px;
+  border-radius: 6px;
+  margin: 5px;
+  box-shadow: 1px 1px 2px 1px rgba(200, 200, 200, 0.75);
+  height: 350px;
 }
 
-.top_tool {
-  display: flex;
-  justify-content: space-around;
-}
-
-.main_container {
-  display: flex;
-  justify-content: space-around;
-}
-
-.card-background{
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.75);
-  background-position: center;
+.card-background {
+  position: relative;
   background-size: cover;
   height: 240px;
+  width: 100%;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.card-link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.card-title {
+  position: absolute;
+  top: 200px;
+  left: 10px;
+  color: white;
+}
+
+
+.card-category {
+  font-size: 14px;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  color: white;
+}
+
+.card:hover {
+  box-shadow: 4px 4px 8px 4px rgba(200, 200, 200, 0.75);
+}
+
+.card-text {
+  position: absolute;
+  left: 10px;
+  top: 100px;
+  margin-top: 70px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.card-description {
+  font-size: 15px;
+  padding: 10px;
+
 }
 
 .card_show {
@@ -33,20 +69,20 @@
 
 }
 
-.card-category {
-  font-size: 14px;
-}
-
-.card-description {
-  font-size: 12px;
-}
-
 .dashboard-card {
   display: flex;
   height: 80px;
   align-items: center;
   justify-content: space-around;
   margin: 10px 200px;
+}
+
+.far {
+  position: absolute;
+  right: 5px;
+  bottom: 9px;
+  color: grey;
+
 }
 
 .accepted {
@@ -60,3 +96,10 @@
   text-shadow: initial;
   color: $red;
 }
+
+.form-control {
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+
