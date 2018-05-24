@@ -8,6 +8,11 @@
   height: 350px;
 }
 
+.top_tool {
+  display: flex;
+  justify-content: space-around;
+}
+
 .card-background {
   position: relative;
   background-size: cover;
