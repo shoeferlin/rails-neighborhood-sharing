@@ -4,13 +4,16 @@ class Tool < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  # include PgSearch
+  # pg_search_scope :global_search,
+  #   against: [ :name, :description ],
+  #   associated_against: {
+  #     user: [ :email ]
+  #   },
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
+
   include PgSearch
-  pg_search_scope :global_search,
-    against: [ :name, :description ],
-    associated_against: {
-      user: [ :email ]
-    },
-    using: {
-      tsearch: { prefix: true }
-    }
+  multisearchable against: [ :name, :description, :category ]
 end

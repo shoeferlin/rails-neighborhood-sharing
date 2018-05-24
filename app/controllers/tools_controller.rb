@@ -7,12 +7,20 @@ class ToolsController < ApplicationController
     @tools = policy_scope(Tool).order(created_at: :desc)
 
     if params[:query].present?
-      sql_query = " \
-        tools.name ILIKE :query \
-        OR tools.description ILIKE :query \
-        OR users.email ILIKE :query \
-      "
-      @tools = Tool.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+      @tools = []
+      PgSearch::Multisearch.rebuild(Tool)
+      PgSearch::Multisearch.rebuild(User)
+      results = PgSearch.multisearch(params[:query])
+
+      results.each do |result|
+        if result.searchable.class.name == 'User'
+          result.searchable.owned_tools.each do |tool|
+            @tools << tool
+          end
+        else
+          @tools.push(result.searchable)
+        end
+      end
     else
       @tools = Tool.all
     end
