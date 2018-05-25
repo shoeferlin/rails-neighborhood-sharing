@@ -68,17 +68,19 @@
       <% if @tool.reviews.blank? %>
         <h3 class="review-text">Be the first to leave a review for <%= @tool.name %></h3>
       <% else %>
+
         <h3 class="review-text">This item has <%= pluralize @tool.reviews.size, "review" %></h3>
         <ul>
           <% @tool.reviews.each do |review| %>
+          <ul>
             <li><%= review.content %></li>
-            <% render 'reviews/show', review: @review %>
+          </ul>
+              <% render 'reviews/show', review: @review %>
           <% end %>
-        </ul>
+
       <% end %>
     </div>
   </div>
-
 
   <%= render 'reviews/form', tool: @tool, review: @review %>
 

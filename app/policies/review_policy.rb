@@ -7,5 +7,6 @@ class ReviewPolicy < ApplicationPolicy
 
   def create?
     return true
+    raise
   end
 end
