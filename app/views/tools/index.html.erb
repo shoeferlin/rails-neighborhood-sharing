@@ -1,3 +1,4 @@
+<div class="banner-short" style="background-image: url('<%= image_url 'banner-tools.jpg' %>');"></div>
 <div class="container">
   <div class="index-headline-cart">
     <h1> Choose a tool</h1>
@@ -12,12 +13,11 @@
     <div class="col-sm-12 col-sm-offset-0">
       <%= form_tag tools_path, method: :get do %>
       <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-        placeholder: "Find a tool"
-        %>
-        <% end %>
-      </div>
+        params[:query],
+        class: "form-control",
+        placeholder: "Search ..."
+      %>
+      <% end %>
     </div>
     <div class="row">
       <% @tools.each do |tool| %>
