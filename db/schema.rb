@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_101905) do
+ActiveRecord::Schema.define(version: 2018_05_25_122210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 2018_05_24_101905) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "tool_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tool_id"], name: "index_reviews_on_tool_id"
   end
 
   create_table "tools", force: :cascade do |t|
@@ -71,5 +79,6 @@ ActiveRecord::Schema.define(version: 2018_05_24_101905) do
 
   add_foreign_key "bookings", "tools"
   add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "tools"
   add_foreign_key "tools", "users"
 end
