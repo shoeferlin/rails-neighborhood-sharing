@@ -2,16 +2,48 @@
 <!-- ------------- -->
 
 <div class="container">
-
   <div class="row booking_action">
     <div class="container  dashboard-box" >
-      <h3 class="pending-booking">Pending bookings</h3>
+      <h3 class="action-booking">Pending bookings</h3>
       <div>
         <% @bookings.each do |booking| %>
           <% if booking.status == "pending" %>
-          <div class="pending-card">
+          <div class="action-card">
             <div class="card-background dashboard-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
-              <% if booking.tool.photo? %
+              <% if booking.tool.photo? %>
+                url('<%= cl_image_path booking.tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
+              <% elsif !booking.tool.picture_url.nil? %>
+                url(<%= booking.tool.picture_url %>)
+              <% else %>
+                url('https://picsum.photos/300/200/?random')
+              <% end %>">
+                <h4 class="dashboard-h4"><%= booking.tool.name %></h4>
+              </div>
+              <div class="card-description booking-info">
+                <p>Booked by: <%= booking.user.email %></p>
+                <p>Start time: <%=  %> </p>
+                <p>Start end: <%=  %> </p>
+              </div>
+              <div class="button-A-D">
+                <%= link_to accept_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
+                  <button class='btn btn-success'> Accept </button>
+                <% end %>
+                <%= link_to decline_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
+                  <button class='btn btn-warning'> Decline </button>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="container dashboard-box">
+      <h3 class= "action-booking" >Accepted bookings</h3>
+      <% @bookings.each do |booking| %>
+        <% if booking.status == "accepted" %>
+          <div class="action-card">
+             <div class="card-background dashboard-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
+              <% if booking.tool.photo? %>
                 url('<%= cl_image_path booking.tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
               <% elsif !booking.tool.picture_url.nil? %>
                 url(<%= booking.tool.picture_url %>)
@@ -26,44 +58,36 @@
                 <p>Start end: <%=  %> </p>
               </div>
             </div>
-            <div>
-              <%= link_to accept_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
-                <button class='btn btn-success'> Accept </button>
-              <% end %>
-              <%= link_to decline_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
-                <button class='btn btn-warning'> Decline </button>
-              <% end %>
-            </div>
         <% end %>
       <% end %>
     </div>
-  </div>
-    <div class="accepted-booking dashboard-box">
-      <h3>Accepted bookings</h3>
-      <% @bookings.each do |booking| %>
-        <% if booking.status == "accepted" %>
-          <div class="card accepted b-card">
-            <p><%= booking.tool.name %></p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="declined-booking dashboard-box">
-      <h3>Declined bookings</h3>
+    <div class="container dashboard-box">
+      <h3 class="action-booking"> Declined bookings</h3>
       <% @bookings.each do |booking| %>
         <% if booking.status == "declined" %>
-          <div class="card declined">
-            <p><%= booking.tool.name %> <%= booking.id %> </p>
+          <div class="action-card">
+            <div class="card-background dashboard-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
+              <% if booking.tool.photo? %>
+                url('<%= cl_image_path booking.tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
+              <% elsif !booking.tool.picture_url.nil? %>
+                url(<%= booking.tool.picture_url %>)
+              <% else %>
+                url('https://picsum.photos/300/200/?random')
+              <% end %>">
+              <h4 class="dashboard-h4"><%= booking.tool.name %></h4>
+            </div>
+            <div class="card-description booking-info">
+              <p>Booked by: <%= booking.user.email %></p>
+              <p>Start time: <%=  %> </p>
+              <p>Start end: <%=  %> </p>
+            </div>
           </div>
         <% end %>
       <% end %>
     </div>
   </div>
+</div>
 
-  </br>
-  <div class="container">
-    <div class="row">
-      <div class="add_tool">
         <% if policy(Tool).create? %>
           <%= link_to 'Return', tools_path %>
         <% end %>
