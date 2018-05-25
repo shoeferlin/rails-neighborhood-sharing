@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Add a new tool</h2>
-  <%= simple_form_for @tool do |f| %>
+  <%= simple_form_for(@tool, :defaults => { :input_html => { :class => "style-text" } }) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :category, collection: @categories %>

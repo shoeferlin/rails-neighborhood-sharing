@@ -57,7 +57,8 @@
   display: flex;
   justify-content: space-around;
   margin-top: 47px;
-  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
 }
 
 .dashboard-box {
@@ -66,9 +67,14 @@
   line-height: 25px;
   border-radius: 6px;
   margin: 5px;
-  box-shadow: 1px 1px 2px 1px rgba(200, 200, 200, 0.75);
-  height: 350px;
+  box-shadow: 4px -6px 12px 6px rgba(200, 200, 200, 0.75);
   padding: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 756px;
+  padding-bottom: 50px;
 }
 
 .dashboard-card {
@@ -82,8 +88,10 @@ text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 color: white;
 }
 
-.pending-card {
+.action-card {
  display: flex;
+ justify-content: space-around;
+ align-items: center;
 }
 
 .booking-info {
@@ -91,5 +99,17 @@ color: white;
   margin-left: 15px;
   align-items: center;
 }
+
+.button-A-D {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 19px;
+}
+
+.btn-warning{
+  margin-left: 11px;
+}
+
 
 
