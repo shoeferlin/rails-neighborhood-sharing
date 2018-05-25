@@ -1,6 +1,8 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :tool
+  validates :start_time, presence: true
+  validates :end_time, presence: true
 end
 
 def destroy

@@ -18,3 +18,14 @@ $(function () {
           });
 
 })
+
+// var email = document.getElementById("date");
+
+// email.addEventListener("input", function (event) {
+//   if (email.validity.typeMismatch) {
+//     email.setCustomValidity("I expect a date, darling!");
+//   } else {
+//     email.setCustomValidity("");
+//   }
+// });
+
