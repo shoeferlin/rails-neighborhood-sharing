@@ -13,7 +13,7 @@
             <div class="pending-card">
               <div class="card-background dashboard-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
                 <% if booking.tool.photo? %>
-                  url('<%= cl_image_path tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
+                  url('<%= cl_image_path booking.tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
                 <% elsif !booking.tool.picture_url.nil? %>
                   url(<%= booking.tool.picture_url %>)
                 <% else %>
@@ -52,7 +52,7 @@
       <% end %>
     <% end %>
   </div>
-            
+
   <div class="declined-booking dashboard-box">
     <h3>Declined bookings</h3>
     <% @bookings.each do |booking| %>
