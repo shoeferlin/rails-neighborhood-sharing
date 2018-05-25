@@ -12,7 +12,15 @@
           <ul class="product-list">
             <li>
               <span class="product-img">
-                  <img src="<%= booking.tool.picture_url %>" alt="No Picture" height="100" width="100">
+                  <img src="
+                    <% if booking.tool.photo? %>
+                      <%= cl_image_path booking.tool.photo, height: 100, width: 100, crop: :fill %>
+                    <% elsif !booking.tool.picture_url.nil? %>
+                        <%= booking.tool.picture_url%>
+                    <%else %>
+                      'http://treibholzeffekt.com/wp-content/uploads/2014/12/Werkzeuge_dunkel.jpg'
+                    <%end %>
+                  " alt="No Picture" height="100" width="100">
               </span>
               <span class="product-count">Nr.: <%= count %></span>
               <span class="product-title"> <%= link_to booking.tool.name, tool_path(booking.tool) %> </span>

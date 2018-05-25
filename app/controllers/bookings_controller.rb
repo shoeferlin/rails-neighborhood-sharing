@@ -7,18 +7,19 @@ class BookingsController < ApplicationController
   def create
     @tool = Tool.find(params[:tool_id])
     @booking = Booking.new(user: current_user)
-    params["booking"]["start_date"].to_date
-
-    @booking.start_time = DateTime.parse(params["booking"]["start_date"])
-    @booking.end_time = DateTime.parse(params["booking"]["end_date"])
-
     @booking.tool = @tool
     authorize @booking
-    if @booking.save
-
-      redirect_to tool_path(@tool)
-    else
+    if params["booking"]["start_date"].empty? || params["booking"]["end_date"].empty?
+      @message = "No valid date"
       render 'tools/show'
+    else
+      @booking.start_time = DateTime.parse(params["booking"]["start_date"])
+      @booking.end_time = DateTime.parse(params["booking"]["end_date"])
+      if @booking.save
+        redirect_to tool_path(@tool)
+      else
+        render 'tools/show'
+      end
     end
   end
 

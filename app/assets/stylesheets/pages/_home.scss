@@ -1,2 +1,18 @@
 // Specific CSS for your home-page
 
+.index-headline-cart {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.headline-aline {
+  text-align: center;
+  display: flex;
+  padding: 23px 0px;
+}
+
+.headline-aline p {
+  color: $orange
+}
+

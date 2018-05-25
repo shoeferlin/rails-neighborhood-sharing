@@ -1,5 +1,13 @@
 <div class="container">
-  <h1> Choose a tool</h1>
+  <div class="index-headline-cart">
+    <h1> Choose a tool</h1>
+    <div class="headline-aline">
+      <%= link_to(bookings_path) do %>
+        <i class="fas fa-shopping-cart scart-icon"></i>
+        <p><%= Booking.count %></p>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0">
       <%= form_tag tools_path, method: :get do %>

@@ -4,66 +4,63 @@
 <div class="container">
   <div class="row">
     <h3>Pending bookings</h3>
+
     <% @bookings.each do |booking| %>
-      <% if booking.status == "pending" %>
-        <div class="card card-background dashboard-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
-            <% if booking.tool.photo? %>
-              url('<%= cl_image_path booking.tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
-            <% elsif !booking.tool.picture_url.nil? %>
-              url(<%= booking.tool.picture_url %>)
-            <% else %>
-              url('https://picsum.photos/300/200/?random')
-            <% end %>
-            ">
-          <h4><%= booking.tool.name %></h4>
-          <div class="card-description booking-info">
-            <p>Booked by: <%= booking.user.email %></p>
-            <p>Booking id: <%= booking.id %></p>
-            <p>Start time: <%=  %> </p>
-            <p>Start end: <%=  %> </p>
+      <% if booking.tool.user == current_user  %>
+        <% if booking.status == "pending" %>
+          <div class="card card-background dashboard-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
+              <% if booking.tool.photo? %>
+                url('<%= cl_image_path booking.tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
+              <% elsif !booking.tool.picture_url.nil? %>
+                url(<%= booking.tool.picture_url %>)
+              <% else %>
+                url('https://picsum.photos/300/200/?random')
+              <% end %>
+              ">
+            <h4><%= booking.tool.name %></h4>
+            <div class="card-description booking-info">
+              <p>Booked by: <%= booking.user.email %></p>
+              <p>Booking id: <%= booking.id %></p>
+              <p>Start time: <%=  %> </p>
+              <p>Start end: <%=  %> </p>
+            </div>
+            <div>
+              <%= link_to accept_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
+                <button class='btn btn-success'> Accept </button>
+              <% end %>
+              <%= link_to decline_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
+                <button class='btn btn-warning'> Decline </button>
+              <% end %>
+            </div>
           </div>
-          <div>
-            <%= link_to accept_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
-              <button class='btn btn-success'> Accept </button>
-            <% end %>
-            <%= link_to decline_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
-              <button class='btn btn-warning'> Decline </button>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
 
+
     <h3>Accepted bookings</h3>
     <% @bookings.each do |booking| %>
-      <% if booking.status == "accepted" %>
-        <div class="card accepted">
-          <p><%= booking.tool.name %></p>
-        </div>
+      <% if booking.tool.user == current_user  %>
+        <% if booking.status == "accepted" %>
+          <div class="card accepted">
+            <p><%= booking.tool.name %></p>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
 
     <h3>Declined bookings</h3>
     <% @bookings.each do |booking| %>
-      <% if booking.status == "declined" %>
-        <div class="card declined">
-          <p><%= booking.tool.name %> <%= booking.id %> </p>
-        </div>
+      <% if booking.tool.user == current_user  %>
+        <% if booking.status == "declined" %>
+          <div class="card declined">
+            <p><%= booking.tool.name %> <%= booking.id %> </p>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
 
   </div>
-  </br>
-  <div class="container">
-    <div class="row">
-      <div class="add_tool">
-        <% if policy(Tool).create? %>
-          <%= link_to 'Return', tools_path %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <!-- --------------- -->
