@@ -6,7 +6,7 @@
         <%= form_tag tools_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
-          class: "form-control",
+          class: "form-control style-text",
           placeholder: "Find a tool"
           %>
         <%= button_to "Show tools", "tools", :method => :get, class: "btn btn-primary btn-lg" %>
