@@ -44,8 +44,10 @@
 }
 
 .card:hover {
-  box-shadow: 4px 4px 8px 4px rgba(200, 200, 200, 0.75);
+  box-shadow: 2px 2px 4px 4px rgba(200, 200, 200, 0.75);
 }
+
+.card
 
 .card-text {
   position: absolute;
@@ -59,7 +61,6 @@
 .card-description {
   font-size: 15px;
   padding: 10px;
-
 }
 
 .card_show {
