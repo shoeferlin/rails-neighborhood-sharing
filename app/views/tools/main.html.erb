@@ -1,6 +1,19 @@
 <div class="banner" style="background-image: url('https://images.pexels.com/photos/162625/grinder-hitachi-power-tool-flexible-162625.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
   <h1 id="banner-header">Neighborhood Sharing</h1>
-  <%= button_to "Show tools", "tools", :method => :get, class: "btn btn-primary btn-lg" %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= form_tag tools_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+          class: "form-control",
+          placeholder: "Find a tool"
+          %>
+        <%= button_to "Show all tools", "tools", :method => :get, class: "btn btn-primary btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
