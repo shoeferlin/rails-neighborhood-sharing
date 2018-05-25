@@ -10,13 +10,10 @@
   height: 250px;
   padding: 0px 50px;
   color: white;
-  background-position: cover;
-  margin-top: 100px;
+  background-size: cover;
+  margin-top: 200px;
   // sticky footer
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  min-height: calc(100%-65px);
 }
 .footer-links {
   display: flex;
