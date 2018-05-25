@@ -38,17 +38,13 @@
 <div class="container">
   <div class="row">
 
-      <div>
-        <% if policy(@tool).destroy? %>
-          <%= link_to "Delete", tool_path(@tool), method: :delete %>
-        <% end %>
-      </div>
       <!-- <div>
          link_to "Return", tools_path
       </div> -->
       <!-- Add Date picker -->
 
       <%= simple_form_for(@booking, url: bookings_create_path(@tool), method: :post ) do |f| %>
+
           <% f.error_notification %>
 
           <% if @booking.errors.any? %>
@@ -61,9 +57,23 @@
             </div>
           <% end %>
 
+          <% if @message %>
+            <div class="errors-container">
+              <div class="alert alert-warning list-inline">
+                <strong>Warning! </strong><%= @message %></p>
+              </div>
+            </div>
+          <% end %>
+
           <div class="form-group form-inline">
             <div class="col-sm-12 book-info">
               <!-- <div class="date_form_picker"> -->
+                <div class="scartlinks">
+                  <% if policy(@tool).destroy? %>
+                    <%= link_to "Delete", tool_path(@tool), :class => "btn btn-danger", method: :delete %>
+                  <% end %>
+                </div>
+
 
                 <div class="input-group date" id='datetimepicker6'>
                   <input type="text" placeholder="Start Date" name="booking[start_date]" class="form-control" required>

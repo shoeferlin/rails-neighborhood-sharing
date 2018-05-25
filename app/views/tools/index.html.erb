@@ -1,6 +1,14 @@
 <div class="banner-short" style="background-image: url('<%= image_url 'banner-tools.jpg' %>');"></div>
 <div class="container">
-  <h1> Choose a tool</h1>
+  <div class="index-headline-cart">
+    <h1> Choose a tool</h1>
+    <div class="headline-aline">
+      <%= link_to(bookings_path) do %>
+      <i class="fas fa-shopping-cart scart-icon"></i>
+      <p><%= Booking.count %></p>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0">
       <%= form_tag tools_path, method: :get do %>
@@ -11,19 +19,19 @@
       %>
       <% end %>
     </div>
-  </div>
-  <div class="row">
-    <% @tools.each do |tool| %>
+    <div class="row">
+      <% @tools.each do |tool| %>
       <%= render 'card', tool: tool %>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="row">
+      <div style="padding: 20px;">
+        <div class="mapcontainer"
+        id="map"
+        style="width: 100%; height: 40vh"
+        data-markers="<%= @markers.to_json %>"
+        ></div>
+      </div>
+    </div>
   </div>
-   <div class="row">
-    <div class="mapcontainer"
-      id="map"
-      style="width: 100%;
-      height: 40vh;"
-      data-markers="<%= @markers.to_json %>"
-    ></div>
-  </div>
-</div>
 
