@@ -51,4 +51,23 @@
 .banner-container {
   display: flex;
   justify-content: space-between;
+  text-align: center;
+}
+
+.shopping-cart {
+  position: relative;
+}
+
+.scart-icon{
+  color: $orange !important;
+}
+
+.shopping-cart p {
+  color: $orange;
+  font-size: 20px;
+}
+
+.shopping-cart-aline {
+  display: flex;
+  justify-content: space-around
 }
