@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
   def create
     @tool = Tool.find(params[:tool_id])
     @booking = Booking.new(user: current_user)
+    @review = Review.new
     @booking.tool = @tool
     authorize @booking
     if params["booking"]["start_date"].empty? || params["booking"]["end_date"].empty?

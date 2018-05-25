@@ -1,0 +1,50 @@
+ <%= simple_form_for( @booking, url: bookings_create_path(@tool), method: :post ) do |f| %>
+
+      <% f.error_notification %>
+
+      <% if @booking.errors.any? %>
+        <div class="errors-container">
+          <div class="alert alert-warning list-inline">
+              <% @booking.errors.full_messages.each do |message| %>
+                 <strong>Warning! </strong><%= message %></p>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @message %>
+        <div class="errors-container">
+          <div class="alert alert-warning list-inline">
+            <strong>Warning! </strong><%= @message %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="form-group form-inline">
+        <div class="col-sm-12 book-info">
+          <!-- <div class="date_form_picker"> -->
+            <div class="scartlinks">
+              <% if policy(@tool).destroy? %>
+                <%= link_to "Delete", tool_path(@tool), :class => "btn btn-danger", method: :delete %>
+              <% end %>
+            </div>
+
+            <div class="input-group date" id='datetimepicker6'>
+              <input type="text" placeholder="Start Date" name="booking[start_date]" class="form-control" required>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            <div class="input-group date" id='datetimepicker7'>
+              <input type="text" placeholder="End Date" name="booking[end_date]" class="form-control" required>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+
+            <div class="book-button">
+              <%= f.button :submit, "Booking", class: "btn btn-info", id:"date"%>
+            </div>
+        </div>
+      </div>
+  <% end %>
