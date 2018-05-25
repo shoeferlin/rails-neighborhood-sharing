@@ -1,38 +1,36 @@
-<div class="col-sm-6" id="<%= tool.id %>">
-  <div class="card">
-    <div class="card-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
-    <% if tool.photo? %>
-      url('<%= cl_image_path tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
-    <% elsif !tool.picture_url.nil? %>
-      url(<%= tool.picture_url %>)
-    <% else %>
-      url('https://picsum.photos/300/200/?random')
-    <% end %>
-    ">
-      <%= link_to tool_path(tool) do %>
-        <div class="card-link" >
-          <div class="card-category"><p><%= tool.category %></p></div>
-        </div>
-        <div class="card-title">
-          <h4> <%= tool.name%> </h4>
-        </div>
-      <% end  %>
+<%= link_to tool_path(tool) do %>
+  <div class="col-sm-6" id="<%= tool.id %>">
+    <div class="card">
+      <div class="card-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
+        <% if tool.photo? %>
+          url('<%= cl_image_path tool.photo, height: 250, width: 300, crop: :fill, gravity: "faces" %>')
+        <% elsif !tool.picture_url.nil? %>
+          url(<%= tool.picture_url %>)
+        <% else %>
+          url('https://picsum.photos/300/200/?random')
+        <% end %>
+      ">
+      <div class="card-link" >
+        <div class="card-category"><p><%= tool.category %></p></div>
+      </div>
+      <div class="card-title">
+        <h4> <%= tool.name%> </h4>
+      </div>
     </div>
-
-  <div class="card-description">
-    <p><%= tool.description %></p>
-  </div>
-
-  <div class="card-actions">
-    <% if policy(tool).destroy? %>
-      <div class="destroy">
-        <%= link_to tool_path(tool), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" do %><% end %>
+    <div class="card-description">
+      <p><%= tool.description %></p>
+    </div>
+    <div class="card-actions">
+        <% if policy(tool).destroy? %>
+          <div class="destroy">
+            <%= link_to tool_path(tool), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" do %><% end %>
+          </div>
+        <% else %>
+          <div class="disable">
+            <p class="far fa-trash-alt"></p>
+          </div>
+        <% end %>
       </div>
-    <% else %>
-      <div class="disable">
-        <p class="far fa-trash-alt"></p>
-      </div>
-    <% end %>
+    </div>
   </div>
-  </div>
-</div>
+<% end %>

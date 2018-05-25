@@ -7,6 +7,7 @@
       <h3 class="action-booking">Pending bookings</h3>
       <div>
         <% @bookings.each do |booking| %>
+        <% if booking.tool.user == current_user  %>
           <% if booking.status == "pending" %>
           <div class="action-card">
             <div class="card-background dashboard-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
@@ -18,12 +19,12 @@
                 url('https://picsum.photos/300/200/?random')
               <% end %>">
                 <h4 class="dashboard-h4"><%= booking.tool.name %></h4>
-              </div>
-              <div class="card-description booking-info">
-                <p>Booked by: <%= booking.user.email %></p>
-                <p>Start time: <%=  %> </p>
-                <p>Start end: <%=  %> </p>
-              </div>
+                </div>
+                <div class="card-description booking-info">
+                  <p>Booked by: <%= booking.user.email %></p>
+                  <p>Start time: <%=  %> </p>
+                  <p>Start end: <%=  %> </p>
+                </div>
               <div class="button-A-D">
                 <%= link_to accept_booking_path(booking), method: :patch, class: "form-check form-check-inline" do %>
                   <button class='btn btn-success'> Accept </button>
@@ -33,6 +34,7 @@
                 <% end %>
               </div>
             </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -86,15 +88,6 @@
       <% end %>
     </div>
   </div>
-</div>
-
-        <% if policy(Tool).create? %>
-          <%= link_to 'Return', tools_path %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <!-- --------------- -->

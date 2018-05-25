@@ -25,11 +25,16 @@
 //   height: 40px;
 //   width: 40px;
 // }
-.product-title{
-  text-decoration: underline;
-  color:#ff8c00 ;
+.product-title a{
+  color: black;
   width:30%;
 }
+.product-title a:hover{
+  color:$orange !important;
+  text-decoration: underline !important;
+}
+
+
 // .product-category{
 //    font-weight:bold;
 //    width:10%;

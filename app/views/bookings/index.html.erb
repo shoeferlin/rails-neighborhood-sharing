@@ -1,5 +1,5 @@
 <!-- User view -->
-<h1>Shopping Chart</h1>
+<h2>Shopping Cart</h2>
 <div>
   <% count = 1 %>
   <% display = false %>
@@ -12,10 +12,22 @@
           <ul class="product-list">
             <li>
               <span class="product-img">
-                  <img src="<%= booking.tool.picture_url %>" alt="No Picture" height="100" width="100">
+                  <img src="
+                    <% if booking.tool.photo? %>
+                      <%= cl_image_path booking.tool.photo, height: 100, width: 100, crop: :fill %>
+                    <% elsif !booking.tool.picture_url.nil? %>
+                        <%= booking.tool.picture_url%>
+                    <%else %>
+                      'http://treibholzeffekt.com/wp-content/uploads/2014/12/Werkzeuge_dunkel.jpg'
+                    <%end %>
+                  " alt="No Picture" height="100" width="100">
               </span>
               <span class="product-count">Nr.: <%= count %></span>
-              <span class="product-title"><%= booking.tool.name %></span>
+              <span class="product-title"> <%= link_to booking.tool.name, tool_path(booking.tool) %> </span>
+              <span class="product-category">
+                Booked from: <%= booking.start_time %>,
+                To: <%= booking.end_time %>
+              </span>
               <span class="product-category"><%= booking.tool.category %></span>
               <%= check_box_tag "bookings_ids[]", booking.id %>
             </li>
@@ -28,8 +40,8 @@
 
     <% if display %>
       <div class="scartlinks">
-        <%= link_to 'Add new item', new_tool_path, :class => "btn btn-info" %>
-        <%= submit_tag "Delete selected", :class => "btn btn-success" %>
+        <%= link_to 'Add new item', tools_path, :class => "btn btn-info" %>
+        <%= submit_tag "Delete selected", :class => "btn btn-danger" %>
         <%= link_to 'Buy', new_tool_path, :class => "btn btn-success" %>
       </div>
     <% end %>
